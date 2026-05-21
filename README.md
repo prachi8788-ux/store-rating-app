@@ -1,74 +1,92 @@
-Store Rating Management System
-📌 Project Overview
+# 🏪 Store Rating Management System
 
-Store Rating Management System is a full-stack web application where users can:
+A full-stack web application for managing stores, users, and ratings with separate roles for Admin and Normal Users.
 
-View stores
-Give ratings to stores
-Manage store data
-Admin dashboard access
-Rating analytics
-🚀 Tech Stack
-Frontend
-React.js
-Material UI
-Axios
-React Router DOM
-Backend
-Node.js
-Express.js
-Database
-PostgreSQL
-✨ Features
-User Authentication (Login/Signup)
-Store Listing
-Store Rating System
-Admin Dashboard
-Rating Analytics
-Responsive UI
-⚙️ Installation
-1️⃣ Clone Repository
-git clone <your-github-repo-link>
-2️⃣ Frontend Setup
+---
+
+## 🚀 Features
+
+- User Registration & Login
+- Role-based Access (Admin / User)
+- Store Listing
+- Store Rating System
+- Admin Dashboard
+- User Management
+- Add New Users (Admin)
+- Responsive UI
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React.js
+- React Router DOM
+- Axios
+- CSS
+
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- PostgreSQL
+
+---
+
+## 📷 Screenshots
+
+### 🔐 Login Page
+![Login](screenshots/login.png)
+
+### 📝 Register Page
+![Register](screenshots/register.png)
+
+### 📊 User Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### 🏬 Stores Page
+![Stores](screenshots/stores.png)
+
+### ⭐ Rating Page
+![Rating](screenshots/rating.png)
+
+### 👑 Admin Dashboard
+![Admin Dashboard](screenshots/admin_dashboard.png)
+
+### ➕ Add New User
+![Add User](screenshots/add_new_user.png)
+
+### 👥 User Management
+![User Management](screenshots/user_management.png)
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone Repository
+```bash
+git clone <your-repo-url>
+```
+
+### 2️⃣ Frontend Setup
+```bash
 cd frontend
 npm install
 npm start
-3️⃣ Backend Setup
+```
+
+### 3️⃣ Backend Setup
+```bash
 cd backend
 npm install
 npm start
-## 📷 Screenshots
+```
 
-### Login Page
-![Login](screenshots/login.png)
+---
 
-### Register Page
-![Register](screenshots/register.png)
+## 👩‍💻 Author
 
-### Dashboard
-![Dashboard](screenshots/dashboard.png)
+**Prachi Lande**
 
-### Admin Dashboard
-![Admin Dashboard](screenshots/admin_dashboard.png)
 
-### Add New User
-![Add New User](screenshots/add_new_user.png)
-
-### User Management
-![User Management](screenshots/user_management.png)
-
-### Stores Page
-![Stores](screenshots/stores.png)
-
-### Rating Page
-![Rating](screenshots/rating.png)
-
-(Add your project screenshots here)
-
-👩‍💻 Author
-
-Prachi Lande
-
-📄 License
-
-This project is for educational purposes.
