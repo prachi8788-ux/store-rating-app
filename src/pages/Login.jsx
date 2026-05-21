@@ -10,13 +10,10 @@ import {
   IconButton
 } from "@mui/material";
 
-
-
 import MailOutlineIcon from "@mui/icons-material/Email";
 import LockOutlinedIcon from "@mui/icons-material/Lock";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
 import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
@@ -30,25 +27,31 @@ export default function Login() {
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // फॉर्म रीलोड रोखण्यासाठी
-    try {
-      const res = await api.post("/auth/login", {
-        email: form.email,
-        password: form.password,
-      });
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", res.data.user.role);
-      alert("Login Success");
-      if (res.data.user.role === "SYSTEM_ADMIN") {
-        navigate("/admin");
-        } else {
-        navigate("/stores");
-      }
-      
-    } catch (err) {
-      alert("Login Failed");
+  e.preventDefault();
+
+  try {
+    const res = await api.post("/auth/login", {
+      email: form.email,
+      password: form.password,
+    });
+
+    const role = res.data.user.role;
+
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("role", role);
+
+    alert("Login Success");
+
+    if (role === "ADMIN") {
+      navigate("/admin");
+    } else {
+      navigate("/stores");
     }
-  };
+
+  } catch (err) {
+    alert("Login Failed");
+  }
+};
 
   return (
     <Box

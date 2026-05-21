@@ -9,6 +9,7 @@ import Navbar from "../components/Navbar";
 import api from "../api/axios";
 import { AuthContext } from "../contexts/AuthContext";
 
+
 export default function StoreList() {
   
   const [stores, setStores] = useState([]);
@@ -41,13 +42,12 @@ export default function StoreList() {
 
     fetchStores();
   }, []);
+  const handleRateStore = (storeName) => {
 
+  localStorage.setItem("storeName", storeName);
 
-  const handleRateStore = (storeId, storeName) => {
-    alert(`Rating form opening for: ${storeName}`);
-    // इथे तुम्ही रेटिंग देण्याचा पॉपअप डायलॉग किंवा नवीन पेज राउट जोडू शकता
+  window.location.href = "/give-rating";
   };
-
   // सर्च फिल्टर
   const filteredStores = stores.filter(store => 
     store.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -132,7 +132,7 @@ export default function StoreList() {
                       variant="contained"
                       size="small"
                       startIcon={<RateReviewIcon />}
-                      onClick={() => handleRateStore(store.id, store.name)}
+                      onClick={() => handleRateStore(store.name)}
                       sx={{ 
                         textTransform: "none", 
                         backgroundColor: "#1976d2",

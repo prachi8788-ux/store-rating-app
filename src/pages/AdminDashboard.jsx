@@ -20,22 +20,8 @@ export default function AdminDashboard() {
           setChartData(res.data.chartData || []);
         }
       } catch (err) {
-        // API कनेक्ट नसेल तर डमी डेटा डिस्प्ले होईल
-        setRecentUsers([
-          { name: 'Nilesh Mohakar', email: 'nilesh@email.com', role: 'User', status: 'active' },
-          { name: 'Prachi Lande', email: 'prachi@email.com', role: 'Owner', status: 'active' },
-          { name: 'Omkar moharkar', email: 'omkar@email.com', role: 'User', status: 'inactive' }
-        ]);
-        setRecentStores([
-          { storeName: 'Coffee Corner', owner: 'Alice Brown', rating: 4.5 },
-          { storeName: 'Tech Store', owner: 'Bob Wilson', rating: 4.2 },
-          { storeName: 'Book Haven', owner: 'Carol Davis', rating: 4.8 }
-        ]);
-        setChartData([
-          { name: 'Jan', value: 100 },
-          { name: 'Jun', value: 400 },
-          { name: 'Dec', value: 900 }
-        ]);
+        
+        
       }
     };
     fetchDashboardData();
@@ -75,7 +61,7 @@ export default function AdminDashboard() {
         {/* २. डार्क ग्रे साईडबार */}
         <div style={{ width: '240px', backgroundColor: '#2A3E54', color: '#c7d1dd', padding: '20px 10px' }}>
           <div style={{ backgroundColor: '#3E5267', color: 'white', padding: '12px', borderRadius: '6px', marginBottom: '8px', cursor: 'pointer', fontWeight: 'bold' }}>📊 Dashboard</div>
-          <div style={{ padding: '12px', cursor: 'pointer' }}onClick={() => window.location.href="/users"}>👥 Users Management </div>
+          <div style={{ padding: '12px', cursor: 'pointer' }}onClick={() => window.location.href="/Admin/users"}>👥 Users Management </div>
           <div style={{ padding: '12px', cursor: 'pointer' }}onClick={() => window.location.href="/stores"}>🏪 Stores Management</div>
           <div style={{ padding: '12px', cursor: 'pointer' }}onClick={() => window.location.href="/ratings"}>⭐ Ratings Overview</div>
           

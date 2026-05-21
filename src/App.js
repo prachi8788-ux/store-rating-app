@@ -1,25 +1,86 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import StoreList from "./pages/StoreList";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import GiveRating from "./pages/GiveRating";
 import RatingsOverview from "./pages/RatingsOverview";
-import AddNewUser from "./pages/AddNewUser";
 import UserManagement from "./pages/UserManagement";
+import AddNewUser from "./pages/AddNewUser";
 
 function App() {
+  const role = localStorage.getItem("role");
+
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* AUTH */}
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/stores" element={<StoreList />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/ratings" element={<RatingsOverview />} />
-        <Route path="/admin/users/create" element={<AddNewUser />} />
-        <Route path="/users" element={<UserManagement />} />
+
+        {/* ADMIN FULL ACCESS */}
+        <Route
+          path="/admin"
+          element={
+            role === "ADMIN"
+              ? <AdminDashboard />
+              : <Navigate to="/" />
+          }
+        />
+
+        <Route
+          path="/admin/users"
+          element={
+            role === "ADMIN"
+              ? <UserManagement />
+              : <Navigate to="/" />
+          }
+        />
+
+        <Route
+          path="/admin/users/create"
+          element={
+            role === "ADMIN"
+              ? <AddNewUser />
+              : <Navigate to="/" />
+          }
+        />
+
+        <Route
+          path="/ratings"
+          element={
+            role === "ADMIN"
+              ? <RatingsOverview />
+              : <Navigate to="/" />
+          }
+        />
+
+        {/* DASHBOARD (USER + OWNER + ADMIN) */}
+        <Route
+          path="/dashboard"
+          element={
+            role ? <Dashboard /> : <Navigate to="/" />
+          }
+        />
+
+        {/* STORES (ALL LOGGED USERS) */}
+        <Route
+          path="/stores"
+          element={
+            role ? <StoreList /> : <Navigate to="/" />
+          }
+        />
+
+        {/* ⭐ GIVE RATING (ALL USERS) */}
+        <Route
+          path="/give-rating"
+          element={
+            role ? <GiveRating /> : <Navigate to="/" />
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   );

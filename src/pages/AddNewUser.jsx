@@ -27,9 +27,9 @@ export default function AddNewUser() {
     e.preventDefault();
     setLoading(true);
     try {
-      await api.post("/admin/users", form);
+      await api.post("/auth/register", form);
       alert("User Created Successfully!");
-      navigate("/admin/users"); // युझर लिस्ट पेजवर परत जाण्यासाठी
+      navigate("/auth/register"); // युझर लिस्ट पेजवर परत जाण्यासाठी
     } catch (err) {
       alert("Failed to create user. Please try again.");
     } finally {

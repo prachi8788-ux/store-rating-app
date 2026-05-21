@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   Box, Typography, Button, Paper, TextField, MenuItem,
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -38,18 +38,16 @@ export default function UserManagement() {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
-  const handleClearFilters = () => {
-    setFilters({ name: "", email: "", address: "", role: "" });
-  };
+  
 
   // युझर रोलनुसार रंगांचे बॅजेस ठरवणारे फंक्शन (हुबेहूब इमेजप्रमाणे)
   const getRoleStyle = (role) => {
     switch (role) {
-      case "SYSTEM ADMIN":
+      case "SYSTEM_ADMIN":
         return { backgroundColor: "#D32F2F", color: "white" };
-      case "STORE OWNER":
+      case "STORE_OWNER":
         return { backgroundColor: "#E65100", color: "white" };
-      case "NORMAL USER":
+      case "NORMAL_USER":
         return { backgroundColor: "#1976D2", color: "white" };
       default:
         return { backgroundColor: "#757575", color: "white" };
@@ -57,14 +55,21 @@ export default function UserManagement() {
   };
 
   // फिल्टर्सनुसार डेटा फिल्टर करणे
+  const handleClearFilters = () => {
+  setFilters({ name: "", email: "", address: "", role: "" });
+  };
+
   const filteredUsers = users.filter((user) => {
-    return (
-      user.name.toLowerCase().includes(filters.name.toLowerCase()) &&
-      user.email.toLowerCase().includes(filters.email.toLowerCase()) &&
-      user.address.toLowerCase().includes(filters.address.toLowerCase()) &&
-      (filters.role === "" || user.role === filters.role)
-    );
-  });
+  return (
+    (user?.name || "").toLowerCase().includes((filters?.name || "").toLowerCase()) &&
+    
+    (user?.email || "").toLowerCase().includes((filters?.email || "").toLowerCase()) &&
+    
+    (user?.address || "").toLowerCase().includes((filters?.address || "").toLowerCase()) &&
+    
+    ((filters?.role || "") === "" || user?.role === filters.role)
+  );
+});
 
   return (
     <Box sx={{ p: 4, backgroundColor: "#f4f6f8", minHeight: "100vh" }}>
@@ -96,9 +101,9 @@ export default function UserManagement() {
           
           <TextField select label="Role" name="role" size="small" value={filters.role} onChange={handleFilterChange} sx={{ backgroundColor: "white" }}>
             <MenuItem value="">All Roles</MenuItem>
-            <MenuItem value="SYSTEM ADMIN">SYSTEM ADMIN</MenuItem>
-            <MenuItem value="STORE OWNER">STORE OWNER</MenuItem>
-            <MenuItem value="NORMAL USER">NORMAL USER</MenuItem>
+            <MenuItem value="SYSTEM_ADMIN">SYSTEM ADMIN</MenuItem>
+            <MenuItem value="STORE_OWNER">STORE OWNER</MenuItem>
+            <MenuItem value="NORMAL_USER">NORMAL USER</MenuItem>
           </TextField>
 
           <Button variant="outlined" onClick={handleClearFilters} sx={{ textTransform: "none", height: "40px", borderRadius: "6px" }}>
