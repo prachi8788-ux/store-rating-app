@@ -66,7 +66,7 @@ A full-stack web application for managing stores, users, and ratings with separa
 
 ### 1️⃣ Clone Repository
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/prachi8788-ux/store-rating-app.git>
 ```
 
 ### 2️⃣ Frontend Setup
